@@ -32,7 +32,7 @@ async function loadPlaylist() {
     playlist = await res.json();
     if (playlist.length > 0) loadTrack(0);
   } catch (e) {
-    playerSong.textContent = 'SIN ARCHIVOS';
+    playerSong.textContent = window.i18n ? window.i18n.translate('player-no-files') : 'SIN ARCHIVOS';
   }
 }
 

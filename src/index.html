@@ -15,17 +15,18 @@
 <nav>
   <div class="nav-logo">E.A.</div>
   <ul class="nav-links">
-    <li><a href="#hero">ABOUT ME</a></li>
-    <li><a href="#building-section">STACK</a></li>
-    <li><a href="#code-section">EXPERIENCIA</a></li>
-    <li><a href="#projects">PROYECTOS</a></li>
-    <li><a href="#manifesto">MANIFIESTO</a></li>
-    <li><a href="#contacto">CONTACTO</a></li>
+    <li><a href="#hero" data-i18n="nav-about">ABOUT ME</a></li>
+    <li><a href="#building-section" data-i18n="nav-stack">STACK</a></li>
+    <li><a href="#code-section" data-i18n="nav-experience">EXPERIENCIA</a></li>
+    <li><a href="#projects" data-i18n="nav-projects">PROYECTOS</a></li>
+    <li><a href="#manifesto" data-i18n="nav-manifesto">MANIFIESTO</a></li>
+    <li><a href="#contacto" data-i18n="nav-contact">CONTACTO</a></li>
   </ul>
   <div class="music-player">
+    <button id="langToggleBtn" class="lang-btn">EN</button>
     <div class="player-cover" id="playerCover"></div>
     <div class="player-info">
-      <span class="player-song" id="playerSong">SIN REPRODUCCIÓN</span>
+      <span class="player-song" id="playerSong" data-i18n="player-no-play">SIN REPRODUCCIÓN</span>
     </div>
     <div class="player-controls">
       <button id="prevBtn" class="player-btn">⏮</button>
@@ -45,33 +46,33 @@
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-content">
-    <div class="hero-eyebrow">// software developer · systems engineering · v1.0.0</div>
+    <div class="hero-eyebrow" data-i18n="hero-eyebrow">// software developer · systems engineering · v1.0.0</div>
     <h1 class="hero-title glitch">
-      EDUARDO<br>
-      <span class="line2">ALVAREZ</span><br>
-      <span class="line3">DESARROLLO Y SOLUCIONO</span>
+      <span data-i18n="hero-title-1">EDUARDO</span><br>
+      <span class="line2" data-i18n="hero-title-2">ALVAREZ</span><br>
+      <span class="line3" data-i18n="hero-title-3">DESARROLLO Y SOLUCIONO</span>
     </h1>
-    <p class="hero-sub">// desarrollador de software creativo y profesional, estudiante de Ingeniería de Sistemas<br>// con sede en Miraflores, Lima, Perú<br>// React · Angular · Java · TypeScript · C# · Python · n8n · IA</p>
+    <p class="hero-sub" data-i18n="hero-sub">// desarrollador de software creativo y profesional, estudiante de Ingeniería de Sistemas<br>// con sede en Miraflores, Lima, Perú<br>// React · Angular · Java · TypeScript · C# · Python · n8n · IA</p>
     <div class="hero-cta">
-      <button class="btn btn-primary">DESCARGAR CV</button>
-      <a href="#contacto" class="btn btn-ghost">CONTACTO</a>
-      <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="btn btn-ghost btn-ghost-cyan">GITHUB</a>
+      <a href="/public/Eduardo_Alvarez_CV%20.docx" download class="btn btn-primary" data-i18n="hero-cv">DOWNLOAD CV</a>
+      <a href="#contacto" class="btn btn-ghost" data-i18n="hero-contact">CONTACT</a>
+      <a href="https://github.com/eduernesto" target="_blank" rel="noopener" class="btn btn-ghost btn-ghost-cyan" data-i18n="hero-github">GITHUB</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat-item">EDAD<span class="red">21</span></div>
-    <div class="stat-item">IDIOMAS<span>ES/EN</span></div>
-    <div class="stat-item">SEMESTRE<span>7°</span></div>
-    <div class="stat-item">FREQ<span id="hFreq" class="cyan">—</span></div>
-    <div class="stat-item">BPM<span id="hBpm">—</span></div>
-    <div class="stat-item">CAPAS<span id="hLayerCount">7</span></div>
+    <div class="stat-item"><span data-i18n="stat-age">EDAD</span><span class="red">21</span></div>
+    <div class="stat-item"><span data-i18n="stat-lang">IDIOMAS</span><span>ES/EN</span></div>
+    <div class="stat-item"><span data-i18n="stat-semester">SEMESTRE</span><span>7°</span></div>
+    <div class="stat-item"><span data-i18n="stat-freq">FREQ</span><span id="hFreq" class="cyan">—</span></div>
+    <div class="stat-item"><span data-i18n="stat-bpm">BPM</span><span id="hBpm">—</span></div>
+    <div class="stat-item"><span data-i18n="stat-layers">CAPAS</span><span id="hLayerCount">7</span></div>
   </div>
-  <div class="scroll-hint">// SCROLL PARA CONTINUAR ↓</div>
+  <div class="scroll-hint" data-i18n="scroll-hint">// SCROLL PARA CONTINUAR ↓</div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker-wrap">
-  <div class="ticker-inner">
+  <div class="ticker-inner" data-i18n="ticker-text">
     &nbsp;&nbsp;&nbsp;// BRUTALISMO DIGITAL · ARQUITECTURA SONORA · CÓDIGO VIVO · FRECUENCIA MODULADA · CONCRETO DIGITAL · CAPAS DE SONIDO · BEAT REACTIVO · SISTEMA ACTIVO ·&nbsp;&nbsp;&nbsp;// BRUTALISMO DIGITAL · ARQUITECTURA SONORA · CÓDIGO VIVO · FRECUENCIA MODULADA · CONCRETO DIGITAL · CAPAS DE SONIDO · BEAT REACTIVO · SISTEMA ACTIVO ·
   </div>
 </div>
@@ -79,35 +80,35 @@
 <!-- AUDIO -->
 <section id="audio-section">
   <div>
-    <div class="section-label">// módulo de audio</div>
-    <h2 class="section-title">MUSICAL<br>EN VIVO</h2>
-    <p class="section-body">El sistema analiza la música en reproducción usando la Web Audio API. Cada frecuencia se mapea a una capa del edificio. Los bajos mueven la base. Los agudos iluminan la cúpula. El ritmo sacude el concreto.</p>
+    <div class="section-label" data-i18n="audio-label">// módulo de audio</div>
+    <h2 class="section-title" data-i18n="audio-title">MUSICAL<br>EN VIVO</h2>
+    <p class="section-body" data-i18n="audio-body">El sistema analiza la música en reproducción usando la Web Audio API. Cada frecuencia se mapea a una capa del edificio. Los bajos mueven la base. Los agudos iluminan la cúpula. El ritmo sacude el concreto.</p>
   </div>
   <div class="mic-panel">
     <div class="freq-bars" id="freqBars"></div>
     <div class="audio-data">
       <div class="data-cell">
-        <div class="data-cell-label">VOL. PLAYER</div>
+        <div class="data-cell-label" data-i18n="data-vol">VOL. PLAYER</div>
         <div class="data-cell-val red" id="dVol">50</div>
       </div>
       <div class="data-cell">
-        <div class="data-cell-label">BPM</div>
+        <div class="data-cell-label" data-i18n="data-bpm">BPM</div>
         <div class="data-cell-val cyan" id="dFreq">—</div>
       </div>
       <div class="data-cell">
-        <div class="data-cell-label">BAJOS</div>
+        <div class="data-cell-label" data-i18n="data-bass">BAJOS</div>
         <div class="data-cell-val" id="dBass">0</div>
       </div>
       <div class="data-cell">
-        <div class="data-cell-label">MEDIOS</div>
+        <div class="data-cell-label" data-i18n="data-mid">MEDIOS</div>
         <div class="data-cell-val" id="dMid">0</div>
       </div>
       <div class="data-cell">
-        <div class="data-cell-label">AGUDOS</div>
+        <div class="data-cell-label" data-i18n="data-high">AGUDOS</div>
         <div class="data-cell-val" id="dHigh">0</div>
       </div>
       <div class="data-cell">
-        <div class="data-cell-label">CAPAS ACT.</div>
+        <div class="data-cell-label" data-i18n="data-layers-active">CAPAS ACT.</div>
         <div class="data-cell-val" id="dLayers">7</div>
       </div>
     </div>
@@ -116,33 +117,33 @@
 
 <!-- BUILDING -->
 <section id="building-section">
-  <div class="section-label">// edificio brutalista</div>
-    <h2 class="section-title">STACK</h2>
-    <p style="font-size:13px;letter-spacing:2px;color:var(--white);margin-bottom:20px;line-height:1.8;font-weight:600;">Tecnologías que manejo<br>Frontend moderno, backends robustos, servidores y automatización.</p>
+  <div class="section-label" data-i18n="stack-label">// edificio brutalista</div>
+    <h2 class="section-title" data-i18n="stack-title">STACK</h2>
+    <p style="font-size:13px;letter-spacing:2px;color:var(--white);margin-bottom:20px;line-height:1.8;font-weight:600;" data-i18n="stack-subtitle">Tecnologías que manejo<br>Frontend moderno, backends robustos, servidores y automatización.</p>
     <div class="building-controls">
-      <span style="font-size:10px;letter-spacing:2px;color:var(--white);font-weight:600;">NIVEL:</span>
-      <span style="font-size:9px;letter-spacing:1px;color:var(--gray4);">● Básico</span>
-      <span style="font-size:9px;letter-spacing:1px;color:#ffd700;">●● Intermedio</span>
-      <span style="font-size:9px;letter-spacing:1px;color:var(--red);">●●● Avanzado</span>
-      <span style="font-size:9px;letter-spacing:1px;color:var(--cyan);">●●●● Experto</span>
+      <span style="font-size:10px;letter-spacing:2px;color:var(--white);font-weight:600;" data-i18n="stack-level">NIVEL:</span>
+      <span style="font-size:9px;letter-spacing:1px;color:var(--gray4);" data-i18n="stack-basic">● Básico</span>
+      <span style="font-size:9px;letter-spacing:1px;color:#ffd700;" data-i18n="stack-mid">●● Intermedio</span>
+      <span style="font-size:9px;letter-spacing:1px;color:var(--red);" data-i18n="stack-advanced">●●● Avanzado</span>
+      <span style="font-size:9px;letter-spacing:1px;color:var(--cyan);" data-i18n="stack-expert">●●●● Experto</span>
     </div>
     <canvas id="building-canvas"></canvas>
 </section>
 
 <!-- WAVEFORM -->
 <section id="waveform-section">
-  <div class="section-label">// forma de onda</div>
-  <h2 class="section-title" style="margin-bottom:32px;">OSCILADOR</h2>
+  <div class="section-label" data-i18n="wave-label">// forma de onda</div>
+  <h2 class="section-title" style="margin-bottom:32px;" data-i18n="wave-title">OSCILADOR</h2>
   <canvas id="wave-canvas"></canvas>
   <div class="wave-labels">
-    <span>0ms</span><span>TIEMPO →</span><span>BUFFER</span>
+    <span data-i18n="wave-ms">0ms</span><span data-i18n="wave-time">TIEMPO →</span><span data-i18n="wave-buffer">BUFFER</span>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="code-section">
-  <div class="section-label">// experiencia</div>
-  <h2 class="section-title">TRABAJO<br>RECIENTE</h2>
+  <div class="section-label" data-i18n="exp-label">// experiencia</div>
+  <h2 class="section-title" data-i18n="exp-title">TRABAJO<br>RECIENTE</h2>
   <div class="code-terminal">
     <div class="terminal-bar">
       <span class="term-dot" style="background:#ff5f57"></span>
@@ -151,21 +152,21 @@
       <span class="term-title">experience.js</span>
     </div>
     <div class="terminal-body">
-      <span class="cm">// experiencia laboral</span><br><br>
-      <span class="cm">/* Grupo Arqky — Nov 2025 – Presente */</span><br><br>
+      <span class="cm" data-i18n="terminal-exp-comment">// experiencia laboral</span><br><br>
+      <span class="cm" data-i18n="terminal-arqky-comment">/* Grupo Arqky — Nov 2025 – Presente */</span><br><br>
       <span class="kw">const</span> fullstack = {<br>
       &nbsp;&nbsp;empresa: <span class="str">'Grupo Arqky'</span>,<br>
-      &nbsp;&nbsp;rol: <span class="str">'Desarrollador Web Full-Stack & Soporte'</span>,<br>
-      &nbsp;&nbsp;periodo: <span class="str">'Nov 2025 – Presente'</span>,<br>
+      &nbsp;&nbsp;rol: <span class="str" data-i18n="terminal-arqky-rol">'Desarrollador Web Full-Stack & Soporte'</span>,<br>
+      &nbsp;&nbsp;periodo: <span class="str" data-i18n="terminal-arqky-period">'Nov 2025 – Presente'</span>,<br>
       &nbsp;&nbsp;tareas: [<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Desarrollé y mantuve aplicaciones web Full-Stack'</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">  '(HTML, CSS, JavaScript, Python).'</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Automaticé procesos clave con N8N,'</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'  reduciendo tareas manuales del equipo.'</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Consulté y validé datos en SQL'</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'  para soporte y resolución en producción.'</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Participé en pruebas funcionales (QA)'</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'  y coordiné seguimiento de incidencias.'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t1">'Desarrollé y mantuve aplicaciones web Full-Stack'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t2">  '(HTML, CSS, JavaScript, Python).'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t3">'Automaticé procesos clave con N8N,'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t4">'  reduciendo tareas manuales del equipo.'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t5">'Consulté y validé datos en SQL'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t6">'  para soporte y resolución en producción.'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t7">'Participé en pruebas funcionales (QA)'</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="str" data-i18n="terminal-arqky-t8">'  y coordiné seguimiento de incidencias.'</span>,<br>
       &nbsp;&nbsp;],<br>
       };<br><br>
       <span class="fn">export</span> <span class="kw">default</span> fullstack;<br>
@@ -176,15 +177,15 @@
 
 <!-- CODE RAIN -->
 <section id="coderain-section">
-  <div class="rain-label">// código vivo</div>
+  <div class="rain-label" data-i18n="rain-label">// código vivo</div>
   <canvas id="coderain-canvas"></canvas>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">// proyectos personales</div>
-  <h2 class="section-title">MIS<br>PROYECTOS</h2>
-  <p class="section-body" style="max-width:600px;font-size:13px;color:var(--white);font-weight:600;">Proyectos reales que resuelven problemas reales. De la idea al despliegue, cada línea tiene un propósito.</p>
+  <div class="section-label" data-i18n="projects-label">// proyectos personales</div>
+  <h2 class="section-title" data-i18n="projects-title">MIS<br>PROYECTOS</h2>
+  <p class="section-body" style="max-width:600px;font-size:13px;color:var(--white);font-weight:600;" data-i18n="projects-body">Proyectos reales que resuelven problemas reales. De la idea al despliegue, cada línea tiene un propósito.</p>
   <div class="proj-grid">
     <div class="proj-card">
       <div class="proj-cover" style="background:linear-gradient(135deg,#1a1a1a 0%,#ff2d55 100%);">
@@ -193,14 +194,14 @@
         </div>
       </div>
       <div class="proj-body">
-        <div class="proj-title">NOMBRE DEL PROYECTO</div>
-        <div class="proj-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
+        <div class="proj-title" data-i18n="proj-1-title">NOMBRE DEL PROYECTO</div>
+        <div class="proj-desc" data-i18n="proj-1-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
         <div class="proj-tags">
           <span class="proj-tag">REACT</span>
           <span class="proj-tag">NODE</span>
           <span class="proj-tag">N8N</span>
         </div>
-        <button class="btn btn-ghost" style="width:100%;">VER PROYECTO →</button>
+        <button class="btn btn-ghost" style="width:100%;" data-i18n="proj-1-btn">VER PROYECTO →</button>
       </div>
     </div>
     <div class="proj-card">
@@ -210,14 +211,14 @@
         </div>
       </div>
       <div class="proj-body">
-        <div class="proj-title">NOMBRE DEL PROYECTO</div>
-        <div class="proj-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
+        <div class="proj-title" data-i18n="proj-2-title">NOMBRE DEL PROYECTO</div>
+        <div class="proj-desc" data-i18n="proj-2-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
         <div class="proj-tags">
           <span class="proj-tag">PYTHON</span>
           <span class="proj-tag">DOCKER</span>
           <span class="proj-tag">SQL</span>
         </div>
-        <button class="btn btn-ghost" style="width:100%;">VER PROYECTO →</button>
+        <button class="btn btn-ghost" style="width:100%;" data-i18n="proj-2-btn">VER PROYECTO →</button>
       </div>
     </div>
     <div class="proj-card">
@@ -227,14 +228,14 @@
         </div>
       </div>
       <div class="proj-body">
-        <div class="proj-title">NOMBRE DEL PROYECTO</div>
-        <div class="proj-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
+        <div class="proj-title" data-i18n="proj-3-title">NOMBRE DEL PROYECTO</div>
+        <div class="proj-desc" data-i18n="proj-3-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
         <div class="proj-tags">
           <span class="proj-tag">ANGULAR</span>
           <span class="proj-tag">C#</span>
           <span class="proj-tag">.NET</span>
         </div>
-        <button class="btn btn-ghost" style="width:100%;">VER PROYECTO →</button>
+        <button class="btn btn-ghost" style="width:100%;" data-i18n="proj-3-btn">VER PROYECTO →</button>
       </div>
     </div>
   </div>
@@ -243,25 +244,25 @@
 <!-- MANIFESTO -->
 <section id="manifesto">
   <p class="manifesto-text">
-    CÓDIGO LIMPIO, <em>SOLUCIONES REALES.</em><br>
-    INNOVACIÓN CON<br>
-    CADA <em>LÍNEA.</em>
+    <span data-i18n="manifesto-text-1">CÓDIGO LIMPIO, </span><em data-i18n="manifesto-text-2">SOLUCIONES REALES.</em><br>
+    <span data-i18n="manifesto-text-3">INNOVACIÓN CON</span><br>
+    <span data-i18n="manifesto-text-4">CADA </span><em data-i18n="manifesto-text-5">LÍNEA.</em>
   </p>
-  <p class="manifesto-sub">// portfolio · 2026 · eduardo alvarez · desarrollo y soluciono</p>
+  <p class="manifesto-sub" data-i18n="manifesto-sub">// portfolio · 2026 · eduardo alvarez · desarrollo y soluciono</p>
 </section>
 
 <!-- CONTACT -->
 <section id="contacto">
   <div class="contact-grid">
     <div class="contact-info">
-      <div class="section-label">// contacto</div>
-      <h2 class="section-title" style="margin-bottom:8px;">¿TIENES UN<br>PROYECTO?</h2>
+      <div class="section-label" data-i18n="contact-label">// contacto</div>
+      <h2 class="section-title" style="margin-bottom:8px;" data-i18n="contact-title">¿TIENES UN<br>PROYECTO?</h2>
 
       <div class="contact-status">
         <span class="status-dot"></span>
-        <span class="status-text">// estado actual</span>
+        <span class="status-text" data-i18n="contact-status">// estado actual</span>
       </div>
-      <p class="contact-desc" style="margin-bottom:16px;font-size:10px;">Abierto a proyectos freelance, colaboraciones<br>y oportunidades full-time o part-time.</p>
+      <p class="contact-desc" style="margin-bottom:16px;font-size:10px;" data-i18n="contact-desc-1">Abierto a proyectos freelance, colaboraciones<br>y oportunidades full-time o part-time.</p>
 
       <div class="contact-badges">
         <span class="badge">FREELANCE</span>
@@ -270,10 +271,10 @@
         <span class="badge">REMOTO</span>
       </div>
 
-      <p class="contact-desc" style="margin-top:24px;margin-bottom:16px;">Prefiero el contacto directo por WhatsApp o el formulario. Respondo en menos de 24h.</p>
+      <p class="contact-desc" style="margin-top:24px;margin-bottom:16px;" data-i18n="contact-desc-2">Prefiero el contacto directo por WhatsApp o el formulario. Respondo en menos de 24h.</p>
 
       <div class="contact-channels">
-        <a href="#" class="channel" target="_blank">
+        <a href="https://wa.me/51907424040?text=Hola%20Eduardo%21" class="channel" target="_blank">
           <span class="channel-icon">📱</span>
           <span class="channel-label">WHATSAPP</span>
           <span class="channel-arrow">→</span>
@@ -283,7 +284,7 @@
           <span class="channel-label">GMAIL</span>
           <span class="channel-arrow">→</span>
         </a>
-        <a href="#" class="channel" target="_blank">
+        <a href="https://github.com/eduernesto" class="channel" target="_blank">
           <span class="channel-icon">⎇</span>
           <span class="channel-label">GITHUB</span>
           <span class="channel-arrow">→</span>
@@ -296,26 +297,26 @@
         <span class="term-dot" style="background:#ff5f57"></span>
         <span class="term-dot" style="background:#febc2e"></span>
         <span class="term-dot" style="background:#28c840"></span>
-        <span class="term-title" style="margin-left:12px;font-size:10px;color:var(--gray5);">nuevo_mensaje.js</span>
+        <span class="term-title" style="margin-left:12px;font-size:10px;color:var(--gray5);" data-i18n="form-title">nuevo_mensaje.js</span>
       </div>
       <form class="contact-form" onsubmit="event.preventDefault();">
         <div class="field">
-          <label class="field-label">// nombre *</label>
-          <input class="field-input" type="text" placeholder="Tu nombre" required>
+          <label class="field-label" data-i18n="form-name">// nombre *</label>
+          <input class="field-input" type="text" placeholder="Tu nombre" data-i18n="form-name-placeholder" required>
         </div>
         <div class="field">
-          <label class="field-label">// email *</label>
-          <input class="field-input" type="email" placeholder="tu@email.com" required>
+          <label class="field-label" data-i18n="form-email">// email *</label>
+          <input class="field-input" type="email" placeholder="tu@email.com" data-i18n="form-email-placeholder" required>
         </div>
         <div class="field">
-          <label class="field-label">// asunto *</label>
-          <input class="field-input" type="text" placeholder="¿De qué se trata?" required>
+          <label class="field-label" data-i18n="form-subject">// asunto *</label>
+          <input class="field-input" type="text" placeholder="¿De qué se trata?" data-i18n="form-subject-placeholder" required>
         </div>
         <div class="field">
-          <label class="field-label">// mensaje *</label>
-          <textarea class="field-input field-textarea" rows="4" placeholder="Cuéntame sobre tu proyecto o idea..." required></textarea>
+          <label class="field-label" data-i18n="form-message">// mensaje *</label>
+          <textarea class="field-input field-textarea" rows="4" placeholder="Cuéntame sobre tu proyecto o idea..." data-i18n="form-message-placeholder" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;">ENVIAR MENSAJE →</button>
+        <button type="submit" class="btn btn-primary" style="width:100%;" data-i18n="form-submit">ENVIAR MENSAJE →</button>
       </form>
     </div>
   </div>
@@ -325,17 +326,18 @@
 <footer>
   <div class="footer-logo">E.A.</div>
   <div style="font-size:9px;letter-spacing:3px;color:var(--gray4);line-height:2.2;">
-    <div style="color:var(--red);">// software developer</div>
+    <div style="color:var(--red);" data-i18n="footer-desc">// software developer</div>
     <div>REACT · ANGULAR · JAVA · TYPESCRIPT · C# · PYTHON</div>
     <div>N8N · AI · FULL-STACK · IOT</div>
   </div>
   <div class="footer-info">
-    <div style="color:var(--gray5);">MIRAFLORES, LIMA · PERU</div>
+    <div style="color:var(--gray5);" data-i18n="footer-location">MIRAFLORES, LIMA · PERU</div>
     <div>v1.0.0 · E.A.</div>
   </div>
 </footer>
 
 <audio id="audioPlayer" style="display:none"></audio>
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

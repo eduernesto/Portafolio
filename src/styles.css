@@ -76,6 +76,23 @@ nav {
   gap: 8px;
 }
 
+.lang-btn {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--gray3);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 1px;
+  padding: 4px 6px;
+  cursor: crosshair;
+  transition: all 0.15s;
+}
+
+.lang-btn:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
 .player-cover {
   width: 32px;
   height: 32px;
@@ -716,11 +733,11 @@ footer {
 }
 
 .proj-desc {
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.7;
-  color: var(--white);
+  color: var(--gray5);
   font-family: var(--ibm);
-  font-weight: 600;
+  font-weight: 300;
   margin-bottom: 16px;
 }
 
