@@ -245,11 +245,12 @@ nav {
 .hero-title .line3 { color: var(--gray4); font-size: 0.5em; letter-spacing: -1px; }
 
 .hero-sub {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--gray4);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--white);
+  font-weight: 600;
   margin-bottom: 40px;
-  max-width: 420px;
+  max-width: 520px;
   line-height: 2;
 }
 
@@ -290,6 +291,17 @@ nav {
 
 .btn-ghost:hover {
   border-color: var(--white);
+}
+
+.btn-ghost-cyan {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.btn-ghost-cyan:hover {
+  background: var(--cyan);
+  color: var(--black);
+  border-color: var(--cyan);
 }
 
 .hero-stats {
@@ -703,11 +715,11 @@ footer {
 }
 
 .proj-desc {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.7;
-  color: var(--gray5);
+  color: var(--white);
   font-family: var(--ibm);
-  font-weight: 300;
+  font-weight: 600;
   margin-bottom: 16px;
 }
 
