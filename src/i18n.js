@@ -209,8 +209,10 @@ function setLanguage(lang) {
     if (translations[lang][key]) {
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.placeholder = translations[lang][key];
-      } else {
+      } else if (translations[lang][key].indexOf('<') !== -1) {
         el.innerHTML = translations[lang][key];
+      } else {
+        el.textContent = translations[lang][key];
       }
     }
   });

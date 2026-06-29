@@ -43,7 +43,12 @@ function loadTrack(index) {
   audioPlayer.src = track.path;
   playerSong.textContent = track.name;
   if (track.cover) {
-    playerCover.innerHTML = `<img src="${track.cover}" alt="cover">`;
+    const img = document.createElement('img');
+    img.src = track.cover;
+    img.alt = track.name;
+    img.loading = 'lazy';
+    playerCover.innerHTML = '';
+    playerCover.appendChild(img);
   } else {
     playerCover.innerHTML = '';
   }
@@ -275,7 +280,7 @@ function drawHero(data) {
   document.getElementById('hBpm').textContent = isAudioReady ? calcBPM() : '—';
 
   // Overlay building image
-  if (heroImg.complete && heroImg.naturalWidth > 0) {
+  if (heroImg.complete && heroImg.naturalWidth > 0 && window.innerWidth > 480) {
     const imgW = Math.min(w * 0.41, 450);
     const imgH = imgW * (heroImg.naturalHeight / heroImg.naturalWidth);
     const ix = (w - imgW) * 0.82;
@@ -763,3 +768,58 @@ function mainLoop() {
 }
 
 mainLoop();
+
+// ─── HAMBURGER MENU ──────────────────────────────────────────────────
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuBtn.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  menuBtn.textContent = open ? '✕' : '☰';
+});
+
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuBtn.textContent = '☰';
+  });
+});
+
+// ─── CONTACT FORM ────────────────────────────────────────────────────
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  const btn = form.querySelector('button[type="submit"]');
+  const orig = btn.textContent;
+
+  // ponytail: client-side rate-limit — 1 submit per 10s
+  if (btn.dataset.sent) return;
+  btn.dataset.sent = '1';
+  setTimeout(() => delete btn.dataset.sent, 10000);
+
+  btn.textContent = 'ENVIANDO...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const json = await res.json();
+    if (res.ok) {
+      btn.textContent = '✓ ENVIADO';
+      form.reset();
+    } else {
+      btn.textContent = '✗ ' + (json.error || 'ERROR');
+    }
+  } catch {
+    btn.textContent = '✗ ERROR DE RED';
+  }
+
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.disabled = false;
+  }, 3000);
+});

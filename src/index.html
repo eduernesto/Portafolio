@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Eduardo Alvarez — Software Developer. Full-Stack, React, Angular, Python, n8n. Portfolio con música reactiva y visualizaciones en vivo.">
+<meta name="theme-color" content="#080808">
+<meta property="og:title" content="Eduardo Alvarez · Portfolio">
+<meta property="og:description" content="Desarrollo y soluciono. Full-Stack Developer & Systems Engineering student.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tu-dominio.vercel.app">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'">
 <title>Eduardo Alvarez · Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;700&display=swap" rel="stylesheet">
@@ -22,7 +29,9 @@
     <li><a href="#manifesto" data-i18n="nav-manifesto">MANIFIESTO</a></li>
     <li><a href="#contacto" data-i18n="nav-contact">CONTACTO</a></li>
   </ul>
-  <div class="music-player">
+  <div class="nav-right">
+    <button id="menuBtn" class="menu-btn">☰</button>
+    <div class="music-player">
     <button id="langToggleBtn" class="lang-btn">EN</button>
     <div class="player-cover" id="playerCover"></div>
     <div class="player-info">
@@ -40,7 +49,17 @@
       </div>
     </div>
   </div>
+</div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero">ABOUT ME</a>
+  <a href="#building-section">STACK</a>
+  <a href="#code-section">EXPERIENCIA</a>
+  <a href="#projects">PROYECTOS</a>
+  <a href="#manifesto">MANIFIESTO</a>
+  <a href="#contacto">CONTACTO</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -299,22 +318,22 @@
         <span class="term-dot" style="background:#28c840"></span>
         <span class="term-title" style="margin-left:12px;font-size:10px;color:var(--gray5);" data-i18n="form-title">nuevo_mensaje.js</span>
       </div>
-      <form class="contact-form" onsubmit="event.preventDefault();">
+      <form class="contact-form" id="contactForm">
         <div class="field">
           <label class="field-label" data-i18n="form-name">// nombre *</label>
-          <input class="field-input" type="text" placeholder="Tu nombre" data-i18n="form-name-placeholder" required>
+          <input class="field-input" type="text" name="name" placeholder="Tu nombre" data-i18n="form-name-placeholder" required>
         </div>
         <div class="field">
           <label class="field-label" data-i18n="form-email">// email *</label>
-          <input class="field-input" type="email" placeholder="tu@email.com" data-i18n="form-email-placeholder" required>
+          <input class="field-input" type="email" name="email" placeholder="tu@email.com" data-i18n="form-email-placeholder" required>
         </div>
         <div class="field">
           <label class="field-label" data-i18n="form-subject">// asunto *</label>
-          <input class="field-input" type="text" placeholder="¿De qué se trata?" data-i18n="form-subject-placeholder" required>
+          <input class="field-input" type="text" name="subject" placeholder="¿De qué se trata?" data-i18n="form-subject-placeholder" required>
         </div>
         <div class="field">
           <label class="field-label" data-i18n="form-message">// mensaje *</label>
-          <textarea class="field-input field-textarea" rows="4" placeholder="Cuéntame sobre tu proyecto o idea..." data-i18n="form-message-placeholder" required></textarea>
+          <textarea class="field-input field-textarea" rows="4" name="message" placeholder="Cuéntame sobre tu proyecto o idea..." data-i18n="form-message-placeholder" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%;" data-i18n="form-submit">ENVIAR MENSAJE →</button>
       </form>
