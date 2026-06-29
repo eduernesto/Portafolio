@@ -5,9 +5,8 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from src and public directories
+// Serve static files from src directory
 app.use(express.static(path.join(__dirname, 'src')));
-app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // API endpoint to list music files with metadata from playlist.json
 app.get('/api/music', (req, res) => {
