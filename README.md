@@ -5,7 +5,6 @@
 A brutalist and reactive web portfolio, where my three main pillars merge: **programming, music, and digital aesthetics**.
 This system not only showcases my work but behaves like an active digital organism: **the design reacts in real-time to the frequencies of the music you play**.
 
-<img width="1900" height="906" alt="Recording 2026-06-29 145838" src="https://github.com/user-attachments/assets/d243dd68-5abe-43a0-ad74-0e012fe89491" />
 
 ---
 
@@ -121,6 +120,8 @@ The `vercel.json` already includes the necessary rewrites so that functions in `
 ---
 
 ## 📸 Preview
+
+<img width="1900" height="906" alt="Recording 2026-06-29 145838" src="https://github.com/user-attachments/assets/d243dd68-5abe-43a0-ad74-0e012fe89491" />
 
 ---
 
