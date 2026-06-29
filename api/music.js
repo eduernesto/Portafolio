@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const MUSIC_DIR = path.join(__dirname, '..', 'src', 'assets', 'music');
+const MUSIC_DIR = path.join(__dirname, '..', 'assets', 'music');
 
 module.exports = (req, res) => {
   res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=120');
