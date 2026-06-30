@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname)));
 
 // API endpoint to list music files with metadata from playlist.json
 app.get('/api/music', (req, res) => {
-  const musicDir = path.join(__dirname, 'src', 'assets', 'music');
+  const musicDir = path.join(__dirname, 'assets', 'music');
   const configPath = path.join(musicDir, 'playlist.json');
   let config = {};
   try {
@@ -40,7 +40,7 @@ app.get('/api/music', (req, res) => {
 
 // Serve index.html for all routes (SPA routing)
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {

@@ -226,6 +226,10 @@ const heroCanvas = document.getElementById('hero-canvas');
 const hctx = heroCanvas.getContext('2d');
 const heroImg = new Image();
 heroImg.src = 'assets/edifico.png';
+const heroImgRed = new Image();
+heroImgRed.src = 'assets/edifico_red.png';
+// ponytail: building color cycle — 5s normal, 3s fade, 5s red, 3s fade, loop
+let buildingCycleStart = performance.now();
 
 function resizeHero() {
   heroCanvas.width = heroCanvas.offsetWidth;
@@ -290,13 +294,39 @@ function drawHero(data) {
   document.getElementById('hFreq').textContent = isAudioReady ? Math.round(440 + globalAmp * 300) + 'hz' : '—';
   document.getElementById('hBpm').textContent = isAudioReady ? calcBPM() : '—';
 
-  // Overlay building image
+  // Overlay building image with color cycle
   if (heroImg.complete && heroImg.naturalWidth > 0 && window.innerWidth > 480) {
     const imgW = Math.min(w * 0.41, 450);
     const imgH = imgW * (heroImg.naturalHeight / heroImg.naturalWidth);
     const ix = (w - imgW) * 0.82;
     const iy = h - imgH - 2;
-    hctx.drawImage(heroImg, ix, iy, imgW, imgH);
+
+    const elapsed = (performance.now() - buildingCycleStart) % 16000;
+    if (elapsed < 5000) {
+      hctx.drawImage(heroImg, ix, iy, imgW, imgH);
+    } else if (elapsed < 8000) {
+      const a = (elapsed - 5000) / 3000;
+      hctx.drawImage(heroImg, ix, iy, imgW, imgH);
+      if (heroImgRed.complete && heroImgRed.naturalWidth > 0) {
+        hctx.globalAlpha = a;
+        hctx.drawImage(heroImgRed, ix, iy, imgW, imgH);
+        hctx.globalAlpha = 1;
+      }
+    } else if (elapsed < 13000) {
+      if (heroImgRed.complete && heroImgRed.naturalWidth > 0) {
+        hctx.drawImage(heroImgRed, ix, iy, imgW, imgH);
+      } else {
+        hctx.drawImage(heroImg, ix, iy, imgW, imgH);
+      }
+    } else {
+      const a = 1 - (elapsed - 13000) / 3000;
+      hctx.drawImage(heroImg, ix, iy, imgW, imgH);
+      if (heroImgRed.complete && heroImgRed.naturalWidth > 0) {
+        hctx.globalAlpha = a;
+        hctx.drawImage(heroImgRed, ix, iy, imgW, imgH);
+        hctx.globalAlpha = 1;
+      }
+    }
   }
 }
 
@@ -912,10 +942,18 @@ const projectsData = [
     titleKey: 'proj-1-title',
     descKey: 'proj-1-desc',
     longDescKey: 'proj-1-long',
-    tags: ['REACT', 'NODE', 'N8N'],
-    coverGradient: 'linear-gradient(135deg,#1a1a1a 0%,#ff2d55 100%)',
+    tags: ['Go', 'Gin', 'React', 'TypeScript', 'Vite'],
+    cardCover: 'assets/la_chanchita.jpg',
+    overlayCover: 'assets/la_chanchita_full.gif',
+    techs: [
+      { category: 'Backend', items: ['Go', 'Gin', 'GORM', 'JWT (golang-jwt)', 'bcrypt', 'PostgreSQL'] },
+      { category: 'Frontend', items: ['React 19', 'TypeScript', 'Vite'] },
+      { category: 'DB', items: ['PostgreSQL (Supabase / Neon)'] },
+      { category: 'Deploy', items: ['Render (backend)', 'Vercel (frontend)'] },
+    ],
     links: [
-      { label: 'VER DEMO', url: '#' },
+      { label: 'VER DEMO', url: 'https://lachanchita-web.vercel.app' },
+      { label: 'VER REPOSITORIO', url: '#' },
     ],
   },
   {
@@ -923,12 +961,20 @@ const projectsData = [
     titleKey: 'proj-2-title',
     descKey: 'proj-2-desc',
     longDescKey: 'proj-2-long',
-    tags: ['PYTHON', 'DOCKER', 'SQL'],
-    coverGradient: 'linear-gradient(135deg,#1a1a1a 0%,#00d4ff 100%)',
+    tags: ['React', 'FastAPI', 'Python', 'spaCy'],
+    cardCover: 'assets/vitaldent.jpg',
+    overlayVideo: 'assets/vitaldent.mp4',
+    techs: [
+      { category: 'Frontend', items: ['React + Vite'] },
+      { category: 'Backend', items: ['FastAPI (Python)'] },
+      { category: 'DB + Auth', items: ['Supabase (PostgreSQL + Auth + Storage)'] },
+      { category: 'NLP', items: ['spaCy'] },
+      { category: 'ML', items: ['scikit-learn'] },
+      { category: 'Hosting', items: ['Render', 'Vercel'] },
+    ],
     links: [
-      { label: 'VER DEMO', url: '#' },
-      { label: 'CÓDIGO', url: '#' },
-      { label: 'DOCS', url: '#' },
+      { label: 'VER DEMO', url: 'https://plataforma-citas-gukw686dy-eduardoealvarezj.vercel.app' },
+      { label: 'VER REPOSITORIO', url: '#' },
     ],
   },
   {
@@ -936,10 +982,11 @@ const projectsData = [
     titleKey: 'proj-3-title',
     descKey: 'proj-3-desc',
     longDescKey: 'proj-3-long',
-    tags: ['ANGULAR', 'C#', '.NET'],
-    coverGradient: 'linear-gradient(135deg,#1a1a1a 0%,#a8ff78 100%)',
+    tags: ['Agent skill'],
+    cardCover: 'assets/body_doubling.png',
+    overlayCover: 'assets/body_doubling_banner.png',
     links: [
-      { label: 'VER DEMO', url: '#' },
+      { label: 'VER REPOSITORIO', url: 'https://github.com/eduernesto/Body-Doubling' },
     ],
   },
 ];
@@ -947,20 +994,46 @@ const projectsData = [
 // ─── PROJECT OVERLAY ────────────────────────────────────────────────
 const overlayEl = document.getElementById('projectOverlay');
 const overlayCover = document.getElementById('overlayCover');
+const overlayVideo = document.getElementById('overlayVideo');
 const overlayIcon = document.getElementById('overlayIcon');
 const overlayTitle = document.getElementById('overlayTitle');
 const overlayTags = document.getElementById('overlayTags');
 const overlayDesc = document.getElementById('overlayDesc');
+const overlayTechs = document.getElementById('overlayTechs');
 const overlayLinks = document.getElementById('overlayLinks');
 
 function openProjectOverlay(id) {
   const p = projectsData[id];
   if (!p) return;
-  overlayCover.style.background = p.coverGradient;
+  if (p.overlayVideo) {
+    overlayCover.style.background = 'none';
+    overlayVideo.style.display = '';
+    overlayVideo.src = p.overlayVideo;
+    overlayVideo.pause();
+    overlayVideo.currentTime = 0;
+  } else {
+    overlayVideo.style.display = 'none';
+    overlayVideo.src = '';
+    if (p.overlayCover) {
+      overlayCover.style.background = 'url(' + p.overlayCover + ') center/contain no-repeat #111';
+    } else if (p.cardCover) {
+      overlayCover.style.background = 'url(' + p.cardCover + ') center/cover no-repeat #111';
+    } else {
+      overlayCover.style.background = p.coverGradient || '#111';
+    }
+  }
   overlayIcon.textContent = '_' + String(id + 1).padStart(2, '0');
   overlayTitle.textContent = window.i18n.translate(p.titleKey);
   overlayTags.innerHTML = p.tags.map(t => '<span class="proj-tag">' + t + '</span>').join('');
   overlayDesc.textContent = window.i18n.translate(p.longDescKey);
+  if (p.techs) {
+    overlayTechs.style.display = '';
+    overlayTechs.innerHTML = p.techs.map(t =>
+      '<div class="overlay-tech-cat"><span class="overlay-tech-label">' + t.category + ':</span> ' + t.items.join(' · ') + '</div>'
+    ).join('');
+  } else {
+    overlayTechs.style.display = 'none';
+  }
   overlayLinks.innerHTML = p.links.map(l =>
     '<a href="' + l.url + '" class="btn btn-primary overlay-link" target="_blank" rel="noopener">' + l.label + ' →</a>'
   ).join('');
@@ -968,6 +1041,13 @@ function openProjectOverlay(id) {
   overlayEl.dataset.currentProjId = id;
   overlayEl.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function closeProjectOverlay() {
+  overlayEl.classList.remove('open');
+  overlayVideo.pause();
+  overlayVideo.src = '';
+  document.body.style.overflow = '';
 }
 
 function closeProjectOverlay() {

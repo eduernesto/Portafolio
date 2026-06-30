@@ -66,6 +66,7 @@
   <canvas id="hero-canvas"></canvas>
   <div class="hero-content">
     <div class="hero-eyebrow" data-i18n="hero-eyebrow">// software developer · systems engineering · v1.0.0</div>
+    <div class="hero-available"><span class="available-dot"></span> DISPONIBLE</div>
     <h1 class="hero-title glitch">
       <span data-i18n="hero-title-1">EDUARDO</span><br>
       <span class="line2" data-i18n="hero-title-2">ALVAREZ</span><br>
@@ -215,52 +216,55 @@
   <p class="section-body" style="max-width:600px;font-size:13px;color:var(--white);font-weight:600;" data-i18n="projects-body">Proyectos reales que resuelven problemas reales. De la idea al despliegue, cada línea tiene un propósito.</p>
   <div class="proj-grid">
     <div class="proj-card" data-proj-id="0">
-      <div class="proj-cover" style="background:linear-gradient(135deg,#1a1a1a 0%,#ff2d55 100%);">
+      <div class="proj-cover proj-cover-img" style="background-image:url(assets/la_chanchita.jpg);">
         <div class="proj-cover-overlay">
+          <span class="proj-badge">DESTACADO</span>
           <span class="proj-cover-icon">_01</span>
         </div>
       </div>
       <div class="proj-body">
-        <div class="proj-title" data-i18n="proj-1-title">NOMBRE DEL PROYECTO</div>
-        <div class="proj-desc" data-i18n="proj-1-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
+        <div class="proj-title" data-i18n="proj-1-title">Lachanchita</div>
+        <div class="proj-desc" data-i18n="proj-1-desc">Divide gastos con amigos y manten cuentas claras en grupo. Creá grupos, registrá gastos con split igual/exacto/porcentaje, marca quién ya pagó, y visualiza balances con gráficos. Invitá por código, sin registro de otros usuarios.</div>
         <div class="proj-tags">
-          <span class="proj-tag">REACT</span>
-          <span class="proj-tag">NODE</span>
-          <span class="proj-tag">N8N</span>
+          <span class="proj-tag">Go</span>
+          <span class="proj-tag">Gin</span>
+          <span class="proj-tag">React</span>
+          <span class="proj-tag">TypeScript</span>
+          <span class="proj-tag">Vite</span>
         </div>
         <button class="btn btn-ghost btn-proj-open" style="width:100%;" data-i18n="proj-1-btn">VER PROYECTO →</button>
       </div>
     </div>
     <div class="proj-card" data-proj-id="1">
-      <div class="proj-cover" style="background:linear-gradient(135deg,#1a1a1a 0%,#00d4ff 100%);">
+      <div class="proj-cover proj-cover-img" style="background-image:url(assets/vitaldent.jpg);">
         <div class="proj-cover-overlay">
+          <span class="proj-badge">DESTACADO</span>
           <span class="proj-cover-icon">_02</span>
         </div>
       </div>
       <div class="proj-body">
-        <div class="proj-title" data-i18n="proj-2-title">NOMBRE DEL PROYECTO</div>
-        <div class="proj-desc" data-i18n="proj-2-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
+        <div class="proj-title" data-i18n="proj-2-title">VitalDent</div>
+        <div class="proj-desc" data-i18n="proj-2-desc">Aplicación web para gestión de citas médicas odontológicas. Los pacientes pueden agendar, consultar y cancelar citas a través de un chatbot o formulario. Los médicos confirman las citas desde su panel. El administrador gestiona doctores, revisa todas las citas y ve métricas del consultorio. El backend usa FastAPI con Supabase para base de datos y autenticación.</div>
         <div class="proj-tags">
-          <span class="proj-tag">PYTHON</span>
-          <span class="proj-tag">DOCKER</span>
-          <span class="proj-tag">SQL</span>
+          <span class="proj-tag">React</span>
+          <span class="proj-tag">FastAPI</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">spaCy</span>
         </div>
         <button class="btn btn-ghost btn-proj-open" style="width:100%;" data-i18n="proj-2-btn">VER PROYECTO →</button>
       </div>
     </div>
     <div class="proj-card" data-proj-id="2">
-      <div class="proj-cover" style="background:linear-gradient(135deg,#1a1a1a 0%,#a8ff78 100%);">
+      <div class="proj-cover proj-cover-img proj-cover-contain" style="background-image:url(assets/body_doubling.png);">
         <div class="proj-cover-overlay">
           <span class="proj-cover-icon">_03</span>
         </div>
       </div>
       <div class="proj-body">
-        <div class="proj-title" data-i18n="proj-3-title">NOMBRE DEL PROYECTO</div>
-        <div class="proj-desc" data-i18n="proj-3-desc">Descripción breve del proyecto. Tecnologías usadas, problema que resuelve y resultado obtenido.</div>
+        <div class="proj-title" data-i18n="proj-3-title">Body Doubling</div>
+        <div class="proj-desc" data-i18n="proj-3-desc">Body Doubling es una skill para Claude Code y OpenCode que actúa como compañero de trabajo virtual para developers con ADHD. Basada en la técnica real de "body doubling" — donde la presencia de otra persona ayuda al cerebro a activarse y mantenerse enfocado — le da estructura a tus sesiones de código sin juicio ni presión.</div>
         <div class="proj-tags">
-          <span class="proj-tag">ANGULAR</span>
-          <span class="proj-tag">C#</span>
-          <span class="proj-tag">.NET</span>
+          <span class="proj-tag">Agent skill</span>
         </div>
         <button class="btn btn-ghost btn-proj-open" style="width:100%;" data-i18n="proj-3-btn">VER PROYECTO →</button>
       </div>
@@ -274,12 +278,14 @@
   <div class="overlay-panel">
     <button class="overlay-close">✕</button>
     <div class="overlay-cover" id="overlayCover">
+      <video id="overlayVideo" class="overlay-video" muted loop playsinline preload="auto" controls></video>
       <span class="overlay-icon" id="overlayIcon">_01</span>
     </div>
     <div class="overlay-body">
       <div class="overlay-title" id="overlayTitle"></div>
       <div class="overlay-tags" id="overlayTags"></div>
       <div class="overlay-desc" id="overlayDesc"></div>
+      <div class="overlay-techs" id="overlayTechs"></div>
       <div class="overlay-links" id="overlayLinks"></div>
     </div>
   </div>
