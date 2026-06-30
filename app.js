@@ -841,14 +841,7 @@ function updateUI(data) {
     }
   }
 
-  // Project cards vibration
-  const projCards = document.querySelectorAll('.proj-card');
-  const shakeIntensity = globalAmp * 1.5;
-  projCards.forEach(card => {
-    const sx = (Math.random() - 0.5) * shakeIntensity;
-    const sy = (Math.random() - 0.5) * shakeIntensity;
-    card.style.transform = `translate(${sx}px, ${sy}px)`;
-  });
+
 
   // Freq bars
   const step = Math.floor(data.length / NUM_BARS);
