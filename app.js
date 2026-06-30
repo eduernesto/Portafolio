@@ -905,6 +905,94 @@ function drawCodeRain(data) {
   }
 }
 
+// ─── PROJECTS DATA ──────────────────────────────────────────────────
+const projectsData = [
+  {
+    id: 0,
+    titleKey: 'proj-1-title',
+    descKey: 'proj-1-desc',
+    longDescKey: 'proj-1-long',
+    tags: ['REACT', 'NODE', 'N8N'],
+    coverGradient: 'linear-gradient(135deg,#1a1a1a 0%,#ff2d55 100%)',
+    links: [
+      { label: 'VER DEMO', url: '#' },
+    ],
+  },
+  {
+    id: 1,
+    titleKey: 'proj-2-title',
+    descKey: 'proj-2-desc',
+    longDescKey: 'proj-2-long',
+    tags: ['PYTHON', 'DOCKER', 'SQL'],
+    coverGradient: 'linear-gradient(135deg,#1a1a1a 0%,#00d4ff 100%)',
+    links: [
+      { label: 'VER DEMO', url: '#' },
+      { label: 'CÓDIGO', url: '#' },
+      { label: 'DOCS', url: '#' },
+    ],
+  },
+  {
+    id: 2,
+    titleKey: 'proj-3-title',
+    descKey: 'proj-3-desc',
+    longDescKey: 'proj-3-long',
+    tags: ['ANGULAR', 'C#', '.NET'],
+    coverGradient: 'linear-gradient(135deg,#1a1a1a 0%,#a8ff78 100%)',
+    links: [
+      { label: 'VER DEMO', url: '#' },
+    ],
+  },
+];
+
+// ─── PROJECT OVERLAY ────────────────────────────────────────────────
+const overlayEl = document.getElementById('projectOverlay');
+const overlayCover = document.getElementById('overlayCover');
+const overlayIcon = document.getElementById('overlayIcon');
+const overlayTitle = document.getElementById('overlayTitle');
+const overlayTags = document.getElementById('overlayTags');
+const overlayDesc = document.getElementById('overlayDesc');
+const overlayLinks = document.getElementById('overlayLinks');
+
+function openProjectOverlay(id) {
+  const p = projectsData[id];
+  if (!p) return;
+  overlayCover.style.background = p.coverGradient;
+  overlayIcon.textContent = '_' + String(id + 1).padStart(2, '0');
+  overlayTitle.textContent = window.i18n.translate(p.titleKey);
+  overlayTags.innerHTML = p.tags.map(t => '<span class="proj-tag">' + t + '</span>').join('');
+  overlayDesc.textContent = window.i18n.translate(p.longDescKey);
+  overlayLinks.innerHTML = p.links.map(l =>
+    '<a href="' + l.url + '" class="btn btn-primary overlay-link" target="_blank" rel="noopener">' + l.label + ' →</a>'
+  ).join('');
+
+  overlayEl.dataset.currentProjId = id;
+  overlayEl.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProjectOverlay() {
+  overlayEl.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+overlayEl.querySelector('.overlay-close').addEventListener('click', closeProjectOverlay);
+overlayEl.querySelector('.overlay-backdrop').addEventListener('click', closeProjectOverlay);
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-proj-open');
+  if (btn) {
+    const card = btn.closest('.proj-card');
+    if (card) openProjectOverlay(parseInt(card.dataset.projId));
+  }
+});
+
+window.addEventListener('languagechange', () => {
+  if (overlayEl.classList.contains('open')) {
+    const id = overlayEl.dataset.currentProjId;
+    if (id !== undefined) openProjectOverlay(parseInt(id));
+  }
+});
+
 // ─── MAIN LOOP ───────────────────────────────────────────────────────
 function mainLoop() {
   const data = getAudioData();

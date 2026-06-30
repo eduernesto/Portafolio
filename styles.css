@@ -798,6 +798,98 @@ footer {
 
 .proj-tag:hover { border-color: var(--red); color: var(--red); }
 
+/* PROJECT OVERLAY */
+.project-overlay {
+  position: fixed; inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.project-overlay.open { display: flex; }
+.overlay-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(8,8,8,0.88);
+  backdrop-filter: blur(6px);
+  cursor: crosshair;
+}
+.overlay-panel {
+  position: relative;
+  background: var(--gray1);
+  border: 2px solid var(--gray3);
+  max-width: 600px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.overlay-close {
+  position: absolute; top: 12px; right: 12px;
+  z-index: 2;
+  background: transparent;
+  border: 1px solid var(--gray4);
+  color: var(--white);
+  width: 36px; height: 36px;
+  font-size: 14px;
+  cursor: crosshair;
+  transition: all 0.15s;
+  line-height: 1;
+}
+.overlay-close:hover { border-color: var(--red); color: var(--red); }
+.overlay-cover {
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+.overlay-icon {
+  font-family: var(--ibm);
+  font-size: 42px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.overlay-body { padding: 28px; }
+.overlay-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.overlay-tags { margin-bottom: 20px; }
+.overlay-tags .proj-tag { color: var(--gray5); }
+.overlay-desc {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--gray5);
+  font-family: var(--ibm);
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.overlay-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 2px solid var(--gray3);
+  padding-top: 24px;
+}
+.overlay-link {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .project-overlay { padding: 16px; align-items: flex-end; }
+  .overlay-panel { max-height: 90vh; }
+  .overlay-cover { height: 120px; padding: 14px; }
+  .overlay-body { padding: 20px; }
+  .overlay-title { font-size: 17px; }
+  .overlay-icon { font-size: 32px; }
+}
+
 /* CONTACT */
 #contacto {
   background: var(--gray1);
