@@ -179,13 +179,13 @@ function resumeAudioCtx() {
   }
 }
 
+let simBuffer = new Uint8Array(1024);
+
 function getAudioData() {
   if (isAudioReady && analyser) {
     analyser.getByteFrequencyData(dataArray);
     return dataArray;
   }
-  // Fallback: silence until music plays
-  const sim = new Uint8Array(1024);
   simFrame++;
   simBeat += simBpm / 60 / 60;
   const beat = (Math.sin(simBeat * Math.PI * 2) + 1) / 2;
@@ -193,24 +193,31 @@ function getAudioData() {
   if (kick > 0 && (beatHistory.length === 0 || simFrame - beatHistory[beatHistory.length-1] > 20)) {
     beatHistory.push(simFrame);
     if (beatHistory.length > 8) beatHistory.shift();
+    bpmDirty = true;
   }
   for (let i = 0; i < 1024; i++) {
     const f = i / 1024;
     const bass = i < 80 ? (kick * 180 + Math.random() * 40) : 0;
     const wave = Math.sin(simFrame * 0.04 + i * 0.15) * 80 + 80;
     const noise = Math.random() * 30;
-    sim[i] = Math.min(255, Math.round(bass + wave * (1-f) + noise));
+    simBuffer[i] = Math.min(255, Math.round(bass + wave * (1-f) + noise));
   }
   if (simFrame % 180 === 0) simBpm = [90,100,110,120,128,140][Math.floor(Math.random()*6)];
-  return sim;
+  return simBuffer;
 }
 
+let bpmCache = 120;
+let bpmDirty = true;
+
 function calcBPM() {
+  if (!bpmDirty) return bpmCache;
+  bpmDirty = false;
   if (beatHistory.length < 2) return simBpm;
   const gaps = [];
   for (let i = 1; i < beatHistory.length; i++) gaps.push(beatHistory[i] - beatHistory[i-1]);
   const avg = gaps.reduce((a,b)=>a+b,0)/gaps.length;
-  return Math.round(60 / (avg / 60));
+  bpmCache = Math.round(60 / (avg / 60));
+  return bpmCache;
 }
 
 // ─── HERO CANVAS ─────────────────────────────────────────────────────
@@ -796,10 +803,10 @@ function drawWaveform(data) {
 // ─── UPDATE UI ───────────────────────────────────────────────────────
 function updateUI(data) {
   const N = data.length;
-  const bassData = Array.from(data.slice(0, Math.floor(N*0.1)));
-  const midData = Array.from(data.slice(Math.floor(N*0.1), Math.floor(N*0.4)));
-  const highData = Array.from(data.slice(Math.floor(N*0.4), Math.floor(N*0.8)));
-  const allData = Array.from(data);
+  const bassData = data.subarray(0, Math.floor(N*0.1));
+  const midData = data.subarray(Math.floor(N*0.1), Math.floor(N*0.4));
+  const highData = data.subarray(Math.floor(N*0.4), Math.floor(N*0.8));
+  const allData = data;
 
   const avg = arr => arr.length ? Math.round(arr.reduce((a,b)=>a+b,0)/arr.length) : 0;
   globalBass = avg(bassData);
@@ -820,6 +827,7 @@ function updateUI(data) {
     if (beatHistory.length === 0 || now - beatHistory[beatHistory.length-1] > 300) {
       beatHistory.push(now);
       if (beatHistory.length > 8) beatHistory.shift();
+      bpmDirty = true;
     }
   }
 
@@ -1052,6 +1060,11 @@ function mainLoop() {
   drawCodeRain(data);
   animFrame = requestAnimationFrame(mainLoop);
 }
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) cancelAnimationFrame(animFrame);
+  else mainLoop();
+});
 
 mainLoop();
 
